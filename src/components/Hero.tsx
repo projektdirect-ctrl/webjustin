@@ -1,6 +1,9 @@
 import { ArrowDown, Shield, Clock, Star } from 'lucide-react';
+import { useSiteTexts } from '../hooks/useSiteTexts';
 
 export default function Hero() {
+  const { t } = useSiteTexts();
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-blue-950">
       <div
@@ -20,18 +23,19 @@ export default function Hero() {
           <div>
             <div className="inline-flex items-center space-x-2 bg-amber-400/10 border border-amber-400/30 px-4 py-2 mb-6 md:mb-8">
               <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-              <span className="text-amber-400 font-bold uppercase tracking-widest text-xs">Ústecký kraj & celá ČR</span>
+              <span className="text-amber-400 font-bold uppercase tracking-widest text-xs">
+                {t('hero_badge', 'Ústecký kraj & celá ČR')}
+              </span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-none mb-6 md:mb-8">
-              Stav<span className="text-amber-400">a</span>říme
+              {t('hero_title_line1', 'Stavařina')}
               <br />
-              <span className="text-blue-300">pořádně.</span>
+              <span className="text-blue-300">{t('hero_title_line2', 'pořádně.')}</span>
             </h1>
 
             <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed mb-8 md:mb-10 max-w-xl">
-              Kompletní rekonstrukce domů, obklady, zámková dlažba, sádrokartony
-              a zednické práce všeho druhu. Práci děláme poctivě a na čas.
+              {t('hero_subtitle', 'Kompletní rekonstrukce domů, obklady, zámková dlažba, sádrokartony a zednické práce všeho druhu. Práci děláme poctivě a na čas.')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 md:mb-12">
@@ -39,28 +43,28 @@ export default function Hero() {
                 href="#kontakt"
                 className="bg-amber-400 text-blue-950 px-7 py-4 font-black uppercase tracking-widest hover:bg-amber-300 transition-colors text-sm text-center"
               >
-                Chci nacenit projekt
+                {t('hero_cta_primary', 'Chci nacenit projekt')}
               </a>
               <a
                 href="#sluzby"
                 className="border-2 border-white/30 text-white px-7 py-4 font-bold uppercase tracking-wider hover:border-amber-400 hover:text-amber-400 transition-colors text-sm text-center"
               >
-                Co umíme
+                {t('hero_cta_secondary', 'Co umíme')}
               </a>
             </div>
 
             <div className="grid grid-cols-3 gap-3 sm:gap-6">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-black text-amber-400">10+</div>
-                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">Let zkušeností</div>
+                <div className="text-2xl sm:text-3xl font-black text-amber-400">{t('hero_stat1_num', '10+')}</div>
+                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{t('hero_stat1_label', 'Let zkušeností')}</div>
               </div>
               <div className="text-center border-x border-white/10">
-                <div className="text-2xl sm:text-3xl font-black text-amber-400">200+</div>
-                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">Dokončených projektů</div>
+                <div className="text-2xl sm:text-3xl font-black text-amber-400">{t('hero_stat2_num', '200+')}</div>
+                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{t('hero_stat2_label', 'Dokončených projektů')}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-black text-amber-400">100%</div>
-                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">Spokojených klientů</div>
+                <div className="text-2xl sm:text-3xl font-black text-amber-400">{t('hero_stat3_num', '100%')}</div>
+                <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{t('hero_stat3_label', 'Spokojených klientů')}</div>
               </div>
             </div>
           </div>

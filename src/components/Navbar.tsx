@@ -28,7 +28,7 @@ export default function Navbar() {
               <Hammer className="h-6 w-6 text-blue-950" />
             </div>
             <div>
-              <span className="text-white font-black text-2xl uppercase tracking-widest">Stavařina</span>
+              <span className="text-white font-black text-2xl uppercase tracking-widest">J.R.B Práce</span>
               <div className="h-0.5 w-0 group-hover:w-full bg-amber-400 transition-all duration-300" />
             </div>
           </a>

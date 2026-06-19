@@ -8,6 +8,11 @@ interface SiteTexts {
 let cache: SiteTexts | null = null;
 let promise: Promise<SiteTexts> | null = null;
 
+export function clearSiteTextsCache() {
+  cache = null;
+  promise = null;
+}
+
 async function fetchTexts(): Promise<SiteTexts> {
   if (cache) return cache;
   if (!promise) {

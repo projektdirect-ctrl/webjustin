@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Hammer, LogOut, Save, CreditCard as Edit3, Check } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../context/AuthContext';
+import { clearSiteTextsCache } from '../hooks/useSiteTexts';
 import AdminHero from '../components/admin/AdminHero';
 import AdminAbout from '../components/admin/AdminAbout';
 import AdminServices from '../components/admin/AdminServices';
@@ -56,14 +57,26 @@ export default function AdminPanel() {
   const saveAll = async () => {
     setSaving(true);
     const entries = Object.entries(texts);
+    let hasError = false;
     for (const [key, value] of entries) {
-      await supabase
+      const { error } = await supabase
         .from('site_texts')
         .upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
+      if (error) {
+        console.error('Save error for key', key, error);
+        hasError = true;
+      }
     }
     setSaving(false);
+    if (hasError) {
+      alert('Chyba při ukládání. Zkontrolujte konzoli.');
+      return;
+    }
+    clearSiteTextsCache();
     setSaved(true);
-    setTimeout(() => setSaved(false), 2500);
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 1200);
   };
 
   const addPhoto = async (photo: Omit<Photo, 'id'>) => {
